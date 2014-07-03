@@ -1,0 +1,26 @@
+.draggable {
+	height: 300px;
+	overflow-y:auto;
+	border: 1px solid grey;
+}
+
+.droppable {
+	height: 300px;
+	overflow-y:auto;
+	border: 1px solid grey;
+}
+
+.item {
+	border-left: 1px solid grey;
+	border-right: 1px solid grey;
+	padding: 5px;
+}
+
+.item:nth-child(even) {
+	background-color: #DCDCDC;
+}
+
+.item:nth-child(odd) {
+	border-top: 1px solid grey;
+	border-bottom: 1px solid grey;
+}
