@@ -1,4 +1,27 @@
-var app = angular.module('dragNdropApp', []);
+var app = angular.module('dragNdropApp', ['ui']);
+
+app.factory('lodashSrvc', function() {
+    return _;
+});
+
+app.factory('getDataSrvc', function() {
+    var usersName = ['Ana', 'Aayan', 'Ansh', 'Chandu', 'Monu', 'Avi', 'Sonu', 'Ritu', 'Ashish', 'Nirmala', 'Kamal', 'Bua', 'IJ', 'Ratish', 'Puneet', 'Tayee Ji', 'Taya Ji', 'Dadi', 'Dadu', 'Nani', 'Nanu'],
+        userList = [];
+    
+    for(var i = 0, user; user = usersName[i++];) {
+        userList.push({
+            id: i,
+            name: user,
+            selected: false,
+            order: -1
+        });
+    }
+    
+    return {
+        users: userList
+    };
+});
+
 
 app.directive('draggable', function() {
 	return function(scope, element) {
@@ -8,8 +31,8 @@ app.directive('draggable', function() {
 		el.draggable = true;
 
 		el.addEventListener('dragstart', function(e) {
-			e.dataTransfer.effectAllowed = 'move';
-			e.dataTransfer.setData('Text', this.id);
+            e.dataTransfer.effectAllowed = 'move';
+			e.dataTransfer.setData('Index', this.id);
 			this.classList.add('drag');
 			return false;
 		  }, false);
@@ -32,7 +55,6 @@ app.directive('droppable', function() {
 			var el = element[0];
 
 			el.addEventListener('dragover', function(e) {
-				debugger;
 				e.dataTransfer.dropEffect = 'move';
 				// allows us to drop
 				if (e.preventDefault) e.preventDefault();
@@ -41,32 +63,25 @@ app.directive('droppable', function() {
 			}, false);
 
 			el.addEventListener('dragenter', function(e) {
-				debugger;
 				this.classList.add('over');
 				return false;
 			}, false);
 
 			el.addEventListener('dragleave', function(e) {
-				debugger;
 				this.classList.remove('over');
 				return false;
 			}, false);
 
 			el.addEventListener('drop', function(e) {
-				debugger;
 				// Stops some browsers from redirecting.
 				if (e.stopPropagation) e.stopPropagation();
-
 				this.classList.remove('over');
-
-				var binId = this.id;
-				var item = document.getElementById(e.dataTransfer.getData('Text'));
-				this.appendChild(item);
+                var index = e.dataTransfer.getData('Index');
 				// call the passed drop function
 				scope.$apply(function(scope) {
 					var fn = scope.drop();
 					if ('undefined' !== typeof fn) {            
-					fn(item.id, binId);
+					   fn(index);
 					}
 				});
 
@@ -76,8 +91,18 @@ app.directive('droppable', function() {
 	}
 });
 
-app.controller('MainCtrl', function($scope) {
-  $scope.handleDrop = function(item, bin) {
-    //alert('Item ' + item + ' has been dropped into ' + bin);
+app.controller('MainCtrl', function($scope, getDataSrvc, lodashSrvc) {
+    $scope.users = getDataSrvc.users;
+    $scope.selectedUsers = [];
+    
+  $scope.handleDrop = function(id) {
+      selectedUser = lodashSrvc.filter($scope.users, {'id': parseInt(id)})[0];
+      debugger;
+      if(!selectedUser.selected) {
+        selectedUser.selected = true;
+        $scope.selectedUsers.push(selectedUser);
+      }
+      //alert('Item ' + item + ' has been dropped into ' + bin);
   }
 });
+
