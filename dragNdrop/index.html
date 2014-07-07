@@ -13,8 +13,8 @@
 				<div class="col-sm-5 bucket" >
 					<div class="item" id="{{user.id}}" draggable="true" ng-repeat="user in users | filter:{selected:false}" >{{user.name}}</div>
 				</div>
-				<div class="col-sm-offset-2 col-sm-5 bucket" droppable="" drop="handleDrop">
-                    <div class="row item" ng-repeat="user in selectedUsers">
+				<div class="col-sm-offset-2 col-sm-5 bucket" dnd-list="userList" droppable="" drop="handleDrop">
+                    <div class="row item dgble" ng-repeat="user in selectedUsers">
                         <div class="col-md-11">
                             <span class="editable">{{user.name}}</span> 
                         </div>

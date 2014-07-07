@@ -110,10 +110,12 @@ app.directive('dndList', function () {
             items: 'div.dgble',
             //items: 'div.masterFeeLineItemGridStyle div.ng-scope.ngRow',
             start: function (event, ui) {
+                console.log('Start sorting - ' + event.target.id);
                 // on start we define where the item is dragged from
                 startIndex = ($(ui.item).index());
             },
             stop: function (event, ui) {
+                console.log('Stop sorting - ' + event.target.id);
                 // on stop we determine the new index of the
                 // item and store it there
                 var newIndex = ($(ui.item).index());
