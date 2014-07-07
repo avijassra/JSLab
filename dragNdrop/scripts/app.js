@@ -48,8 +48,7 @@ app.directive('draggable', function() {
 app.directive('droppable', function() {
 	return {
 		scope: {
-			drop: '&',
-			bin: '='
+			drop: '&'
 		},
 		link: function(scope, element) {
 			// again we need the native object
