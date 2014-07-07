@@ -16,7 +16,7 @@
 	border: 1px solid grey;
 }
 
-.item {
+.item { 
 	border-left: 1px solid grey;
 	border-right: 1px solid grey;
     border-bottom: 1px solid grey;
@@ -33,4 +33,18 @@
 
 .item:nth-child(odd) {
 	
+}
+
+div.dgble {
+    cursor:move;
+    padding:5px 0px;
+}
+
+div.dgble:hover {
+    background-color: grey;
+    color: #fff;
+}
+
+div.gap {
+    min-height:50px !important;
 }
