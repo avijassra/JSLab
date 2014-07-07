@@ -13,7 +13,7 @@
 				<div class="col-sm-5 bucket" >
 					<div class="item" id="{{user.id}}" draggable="true" ng-repeat="user in users | filter:{selected:false}" >{{user.name}}</div>
 				</div>
-				<div class="col-sm-offset-2 col-sm-5 bucket" dnd-list="userList" droppable="" drop="handleDrop">
+				<div class="col-sm-offset-2 col-sm-5 bucket" dnd-list="selectedUsers" droppable="" drop="handleDrop">
                     <div class="row item dgble" ng-repeat="user in selectedUsers">
                         <div class="col-md-11">
                             <span class="editable">{{user.name}}</span> 
@@ -28,21 +28,9 @@
 			</div>
             <div class="row gap" ></div>
             <div class="row" >
-                <div class="col-md-12" dnd-list="userList">
-                    <div class="row item dgble" ng-repeat="item in selectedUsers">
-                        <div class="col-md-12">
-                            <div class="row" >
-                                <div class="col-md-11">
-                                    <span class="editable">{{item.name}}</span> 
-                                </div>
-                                <div class="col-md-1" >
-                                    <button ng-click="removeFeeLineItem(item.id)" stop-event='click' type="button" class="btn btn-default btn-md pull-right delete" >
-                                        <span class="glyphicon glyphicon-remove pull-right" ></span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-md-12" >
+                    <button type="button" class="pull-right" ng-click="onSave()" >Save</button>
+                    <button type="button" class="pull-right" ng-click="onReset()" >Reset</button>
                 </div>
             </div>
         </div>

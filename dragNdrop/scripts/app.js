@@ -95,7 +95,6 @@ app.directive('droppable', function() {
 // directive for a single list
 app.directive('dndList', function () {
     return function (scope, element, attrs) {
-        debugger;
         // variables used for dnd
         var toUpdate;
         var startIndex = -1;
@@ -138,12 +137,34 @@ app.controller('MainCtrl', function($scope, getDataSrvc, lodashSrvc) {
     
   $scope.handleDrop = function(id) {
       selectedUser = lodashSrvc.filter($scope.users, {'id': parseInt(id)})[0];
-      debugger;
+      
       if(selectedUser && !selectedUser.selected) {
         selectedUser.selected = true;
         $scope.selectedUsers.push(selectedUser);
       }
-      //alert('Item ' + item + ' has been dropped into ' + bin);
+      
+      $scope.$watch('selectedUsers', function(value) {
+          console.log('inside watch');
+        for(var i = 0, user; user = value[i++];) {
+            console.log(user.name);
+        }
+      }, true);
+      
+      $scope.onSave = function() {
+          debugger;
+        for(var i = 0, user; user = $scope.selectedUsers[i++];) {
+            console.log(user.name);
+        }
+      }
+      
+      $scope.onReset = function() {
+          debugger;
+        lodashSrvc.forEach($scope.users, function(item) {
+            item.selected = false;
+        });
+          
+        $scope.selectedUsers = [];
+      }
   }
 });
 
