@@ -8,8 +8,12 @@
 	</head>
 	<body ng-app="dragNdropApp" >
 		<div class="container" ng-controller="MainCtrl">
-			<div class="bin" droppable="" drop="handleDrop" ng-repeat="bin in [1, 2, 3]" bin="bin" id="bin1">{{bin}}</div>
-			<div class="item" id="item_{{item}}" ng-repeat="item in [1, 2, 3]" draggable="true" item="item">{{item}}</div>
+			<div class="row" >
+				<div class="col-sm-5 bucket" >
+					<div class="item" id="item_{{item}}" ng-repeat="item in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]" draggable="true" item="item">{{item}}</div>
+				</div>
+				<div class="col-sm-offset-2 col-sm-5 bucket" droppable="" drop="handleDrop"></div>
+			</div>
 		</div>
 		<!-- script tags -->
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js"></script>
