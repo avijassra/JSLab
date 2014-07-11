@@ -134,12 +134,13 @@ app.controller('MainCtrl', function($scope, getDataSrvc, lodashSrvc) {
     $scope.users = getDataSrvc.users;
     $scope.selectedUsers = [];
     
-  $scope.handleDrop = function(id) {
-      selectedUser = lodashSrvc.filter($scope.users, {'id': parseInt(id)})[0];
-      
-      if(selectedUser && !selectedUser.selected) {
-        selectedUser.selected = true;
-        $scope.selectedUsers.push(selectedUser);
+      $scope.handleDrop = function(id) {
+          selectedUser = lodashSrvc.filter($scope.users, {'id': parseInt(id)})[0];
+
+          if(selectedUser && !selectedUser.selected) {
+            selectedUser.selected = true;
+            $scope.selectedUsers.push(selectedUser);
+          }
       }
       
       $scope.$watch('selectedUsers', function(value) {
@@ -164,6 +165,5 @@ app.controller('MainCtrl', function($scope, getDataSrvc, lodashSrvc) {
           
         $scope.selectedUsers = [];
       }
-  }
-});
+  });
 
