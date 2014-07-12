@@ -1,4 +1,4 @@
-var app = angular.module('dragNdropApp', []);
+var app = angular.module('twentyfourtyeightApp', []);
 
 app.factory('lodashSrvc', function () {
     //'use strict'
