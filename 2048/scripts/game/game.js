@@ -7,5 +7,7 @@ angular.module('Game', [])
         // Update the score
         this.updateScore = function(newScore) {};
         // Are there moves left?
-        this.movesAvailable = function() {};
+        this.movesAvailable = function() {
+            return GridService.anyCellsAvailable() || GridService.titleMatchesAvailable();
+        };
     });
