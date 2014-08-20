@@ -4,43 +4,22 @@
 	<head>
 		<title>Grid Filter</title>
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.11/ng-grid.min.css" >
 		<link rel="stylesheet" href="styles/main.css">
 	</head>
-	<body ng-app="dragNdropApp" >
+	<body ng-app="gridFilter" >
 		<div class="container" ng-controller="MainCtrl">
             <div class="row gap" ></div>
 			<div class="row" >
-				<div class="col-sm-5 bucket" >
-					<div class="item" id="{{user.id}}" draggable="true" ng-repeat="user in users | filter:{selected:false}" >{{user.name}}</div>
-				</div>
-				<div class="col-sm-offset-2 col-sm-5 bucket" dnd-list="selectedUsers" droppable="" drop="handleDrop">
-                    <div class="row item dgble" ng-repeat="user in selectedUsers">
-                        <div class="col-md-11">
-                            <span class="editable">{{user.name}}</span> 
-                        </div>
-                        <div class="col-md-1" >
-                            <button ng-click="remove(item.id)" stop-event='click' type="button" class="btn btn-default btn-md pull-right" >
-                                <span class="glyphicon glyphicon-remove pull-right" ></span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+				<div class="gridStyle" ng-grid="gridOptions">
 			</div>
             <div class="row gap" ></div>
-            <div class="row" >
-                <div class="col-md-12" >
-                    <div class="pull-right">
-                        <button type="button" class="btn btn-primary" ng-click="onSave()" >Save</button>
-                        <button type="button" class="btn btn-default" ng-click="onReset()" >Reset</button>
-                    </div>
-                </div>
-            </div>
         </div>
 		<!-- script tags -->
         <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js" ></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js" ></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js"></script>
-        <script src="http://angular-ui.github.io/ng-grid/"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.11/ng-grid.min.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js" ></script>
 		<script src="scripts/app.js"></script>
 	</body>
