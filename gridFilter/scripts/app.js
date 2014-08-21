@@ -4,15 +4,24 @@
     var MainCtrl = function($scope, getDataSrvc, lodashSrvc) {
         var originalList = [], 
             filterFunc = function() {
-                var name = ($scope.nameFilter || ''),
-                    code = ($scope.codeFilter || '');
-                debugger;
-
-                $scope.countries = lodashSrvc.filter(originalList, { 'name': name});
+                var myFilterCriteria = {};
+                for(var prop in $scope.filter) {
+                    if($scope.filter.hasOwnProperty(prop) && prop) {
+                        myFilterCriteria
+                    }
+                }
+                
+                
+                if(name === '' && code === '') {
+                    $scope.countries = originalList;    
+                } else {
+                    $scope.countries = lodashSrvc.filter(originalList, function(item) { 
+                        return 
+                    });
+                }
             };
         
         $scope.countries = [];
-        
         $scope.filterOptions = {
             filterText: '',
             useExternalFilter: true
