@@ -7,16 +7,27 @@
                 var myFilterCriteria = {};
                 for(var prop in $scope.filter) {
                     if($scope.filter.hasOwnProperty(prop) && prop) {
-                        myFilterCriteria
+                        myFilterCriteria[prop] = $scope.filter[prop].toLowerCase();
                     }
                 }
                 
-                
-                if(name === '' && code === '') {
-                    $scope.countries = originalList;    
+                if(lodashSrvc.isEmpty(myFilterCriteria)) {
+                    $scope.countries = originalList;
                 } else {
                     $scope.countries = lodashSrvc.filter(originalList, function(item) { 
-                        return 
+                        var recMeetsFilter = true;
+                        
+                        for(var prop in myFilterCriteria) {
+                            var valFound = item[prop].toLowerCase().indexOf(myFilterCriteria[prop]) > -1;
+                            
+                            recMeetsFilter = recMeetsFilter && valFound;
+                            
+                            if(!recMeetsFilter) {
+                                break;
+                            }
+                        }
+                        
+                        return recMeetsFilter;
                     });
                 }
             };
@@ -39,8 +50,8 @@
             filterOptions:	$scope.filterOptions
         };
         
-        $scope.$watch('nameFilter', filterFunc);
-        $scope.$watch('codeFilter', filterFunc);
+        $scope.$watch('filter.name', filterFunc);
+        $scope.$watch('filter.code', filterFunc);
         
         getDataSrvc.getAllCountries()
             .then(function(response) {
