@@ -5,10 +5,14 @@
         $scope.countries = [];
         $scope.gridOptions = {
             data: 'countries',
-            columnDefs: [{field:'name', displayName:'Name'}, {field:'alpha-2', displayName:'Code'}]
+            columnDefs: [{field:'name', displayName:'Name'}, {field:'code', displayName:'Code'}]
         };
-        $scope.countries = getDataSrvc.getAllCountries();
-        debugger;
+        getDataSrvc.getAllCountries()
+            .then(function(response) {
+                debugger;
+                $scope.countries = response;
+            });
+        
     };
     
     angular.module('gridFilter', ['ngGrid'])
@@ -19,7 +23,6 @@
                 getAllCountries: function() {
                     var promise = $http.get('data/countries.json')
                             .then(function(response) {
-                                debugger;
                                 return response.data.countries;
                             });
 
