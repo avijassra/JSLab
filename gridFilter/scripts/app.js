@@ -15,19 +15,12 @@
                     $scope.countries = originalList;
                 } else {
                     $scope.countries = lodashSrvc.filter(originalList, function(item) { 
-                        var recMeetsFilter = true;
-                        
                         for(var prop in myFilterCriteria) {
-                            var valFound = item[prop].toLowerCase().indexOf(myFilterCriteria[prop]) > -1;
-                            
-                            recMeetsFilter = recMeetsFilter && valFound;
-                            
-                            if(!recMeetsFilter) {
-                                break;
-                            }
+                            if(!(item[prop].toLowerCase().indexOf(myFilterCriteria[prop]) > -1)) {
+                                return false;
+                            };
                         }
-                        
-                        return recMeetsFilter;
+                        return true;
                     });
                 }
             };
