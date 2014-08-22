@@ -7,3 +7,15 @@
 div.gap {
     min-height:50px !important;
 }
+
+/*input.filterColChkbox {
+    display: none;
+}
+
+input.filterColChkbox:checked + label.glyphicon glyphicon-chevron-down {
+    display: none;
+}
+
+input.filterColChkbox:not(:checked) + label.glyphicon glyphicon-chevron-filter {
+    display: none;
+}*/

@@ -35,7 +35,8 @@
             data: 'countries',
             columnDefs: [{
                 field:'name', 
-                displayName:'Name'
+                displayName:'Name',
+                headerCellTemplate: '<div ng-class="\'colt\' + col.index" class="ngHeaderText ng-binding colt0">Name <div filterable-grid-column="name"></div>'
             }, {
                 field:'code', 
                 displayName:'Code'
@@ -64,6 +65,20 @@
                             });
 
                     return promise;        
+                }
+            };
+        }]).directive('filterableGridColumn', [function() {
+            return {
+                restrict: 'A',
+                priority: 1,
+                scope: {
+                    filterableGridColumn: '@'
+                },
+                template: '<span class="pull-right"><input type="checkbox" class="filterColChkbox" id="{{filterableGridColumn}}_FilterField" /><lable class="glyphicon glyphicon-chevron-down" for="{{filterableGridColumn}}_FilterField" /><lable class="glyphicon glyphicon-chevron-filter" for="{{filterableGridColumn}}_FilterField" /></span>',
+                replace: true,
+                link: function($scope, $element, $attrs) {
+                    debugger;
+                    console.log('abc');
                 }
             };
         }]).controller('MainCtrl', MainCtrl);    
