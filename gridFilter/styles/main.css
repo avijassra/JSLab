@@ -8,14 +8,35 @@ div.gap {
     min-height:50px !important;
 }
 
-/*input.filterColChkbox {
+input.filterColChkbox, input.filterTextChkbox {
     display: none;
 }
 
-input.filterColChkbox:checked + label.glyphicon glyphicon-chevron-down {
+input.filterColChkbox:checked ~ label.glyphicon.glyphicon-chevron-down,
+input.filterColChkbox:not(:checked) ~ input.filterTextContainer:checked ~ label.glyphicon.glyphicon-chevron-down {
     display: none;
 }
 
-input.filterColChkbox:not(:checked) + label.glyphicon glyphicon-chevron-filter {
+input.filterColChkbox:not(:checked) ~ label.glyphicon.glyphicon-filter,
+input.filterColChkbox:not(:checked) ~ div.filterTextContainer {
     display: none;
-}*/
+}
+
+div.filterTextContainer {
+    position: fixed;
+    background-color: #eaeaea;
+    border: 1px solid #000;
+    padding: 10px;
+    z-index: 9999;
+    margin: auto -175px;
+    border-radius: 5px;
+}
+
+div.filterTextContainer input {
+    font-weight: normal;
+}
+
+.v-center {
+    vertical-align: middle !important;
+
+}

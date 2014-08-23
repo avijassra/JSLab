@@ -36,7 +36,7 @@
             columnDefs: [{
                 field:'name', 
                 displayName:'Name',
-                headerCellTemplate: '<div ng-class="\'colt\' + col.index" class="ngHeaderText ng-binding colt0">Name <div filterable-grid-column="name"></div>'
+                headerCellTemplate: '<div ng-class="\'colt\' + col.index" class="ngHeaderText ng-binding colt0">Name <div filterable-grid-column="name" filter-prop="filter.name"></div>'
             }, {
                 field:'code', 
                 displayName:'Code'
@@ -70,15 +70,14 @@
         }]).directive('filterableGridColumn', [function() {
             return {
                 restrict: 'A',
-                priority: 1,
                 scope: {
-                    filterableGridColumn: '@'
+                    filterableGridColumn: '@',
+                    filterProp: '='
                 },
-                template: '<span class="pull-right"><input type="checkbox" class="filterColChkbox" id="{{filterableGridColumn}}_FilterField" /><lable class="glyphicon glyphicon-chevron-down" for="{{filterableGridColumn}}_FilterField" /><lable class="glyphicon glyphicon-chevron-filter" for="{{filterableGridColumn}}_FilterField" /></span>',
+                template: '<span class="pull-right"><input type="checkbox" class="filterTextChkbox" ng-checked="filterProp" /><input type="checkbox" class="filterColChkbox" id="{{filterableGridColumn}}_FilterField" /><label class="glyphicon glyphicon-chevron-down" for="{{filterableGridColumn}}_FilterField" ></label><label class="glyphicon glyphicon-filter" for="{{filterableGridColumn}}_FilterField" ></label><div class="filterTextContainer" ><input type="text" ng-model="filterProp" /><span class="glyphicon glyphicon-remove v-center" ></span></div></span>',
                 replace: true,
                 link: function($scope, $element, $attrs) {
-                    debugger;
-                    console.log('abc');
+                    
                 }
             };
         }]).controller('MainCtrl', MainCtrl);    
