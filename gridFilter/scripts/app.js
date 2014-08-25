@@ -1,3 +1,5 @@
+var abc;
+
 (function() {
     'use strict';
     
@@ -26,6 +28,7 @@
             };
         
         $scope.countries = [];
+        $scope.filter;
         $scope.filterOptions = {
             filterText: '',
             useExternalFilter: true
@@ -36,7 +39,7 @@
             columnDefs: [{
                 field:'name', 
                 displayName:'Name',
-                headerCellTemplate: '<div ng-class="\'colt\' + col.index" class="ngHeaderText ng-binding colt0">Name <div filterable-grid-column="name" filter-prop="filter.name"></div>'
+                headerCellTemplate: '<div ng-class="\'colt\' + col.index" class="ngHeaderText" filterable-grid-column="" display-name="{{col.displayName}}" field-name="{{col.field}}" filter-prop="filter.{{col.field}}" ></div>'
             }, {
                 field:'code', 
                 displayName:'Code'
@@ -44,13 +47,14 @@
             filterOptions:	$scope.filterOptions
         };
         
-        $scope.$watch('filter.name', filterFunc);
-        $scope.$watch('filter.code', filterFunc);
+        $scope.$watch('filter', filterFunc, true);
         
         getDataSrvc.getAllCountries()
             .then(function(response) {
                 $scope.countries = originalList = response;
             });
+        
+        abc= $scope;
     };
     
     angular.module('gridFilter', ['ngGrid'])
@@ -71,10 +75,11 @@
             return {
                 restrict: 'A',
                 scope: {
-                    filterableGridColumn: '@',
+                    displayName: '@',
+                    filedName: '@',
                     filterProp: '='
                 },
-                template: '<span class="pull-right"><input type="checkbox" class="filterTextChkbox" ng-checked="filterProp" /><input type="checkbox" class="filterColChkbox" id="{{filterableGridColumn}}_FilterField" /><label class="glyphicon glyphicon-chevron-down" for="{{filterableGridColumn}}_FilterField" ></label><label class="glyphicon glyphicon-filter" for="{{filterableGridColumn}}_FilterField" ></label><div class="filterTextContainer" ><input type="text" ng-model="filterProp" /><span class="glyphicon glyphicon-remove v-center" ></span></div></span>',
+                template: '<div><input id="ff__{{displayName}}" type="checkbox" class="noShow showFilter"><span class="heading">{{displayName}}<label for="ff__{{displayName}}" class="glyphicon glyphicon-filter pull-right" /></span><span class="filterHeader"><input type="text" ng-model="filterProp" /><label for="ff__{{displayName}}" class="glyphicon glyphicon-remove pull-right" /></span></div>',
                 replace: true,
                 link: function($scope, $element, $attrs) {
                     

@@ -12,13 +12,15 @@ input.filterColChkbox, input.filterTextChkbox {
     display: none;
 }
 
-input.filterColChkbox:checked ~ label.glyphicon.glyphicon-chevron-down,
-input.filterColChkbox:not(:checked) ~ input.filterTextContainer:checked ~ label.glyphicon.glyphicon-chevron-down {
+input.noShow {
+    display: none !important;
+}
+
+input.noShow.showFilter:checked ~ .heading {
     display: none;
 }
 
-input.filterColChkbox:not(:checked) ~ label.glyphicon.glyphicon-filter,
-input.filterColChkbox:not(:checked) ~ div.filterTextContainer {
+input.noShow.showFilter:not(:checked) ~ .filterHeader {
     display: none;
 }
 
