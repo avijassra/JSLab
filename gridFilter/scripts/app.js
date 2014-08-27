@@ -4,19 +4,20 @@ var abc;
     'use strict';
     
     var MainCtrl = function($scope, getDataSrvc, filterText, lodashSrvc) {
-        var originalList = [], 
-            filterFunc = function() {
+        var originalCountryList = [],
+            originalCompanyList = [],
+            filterFunc = function(list) {
                 var myFilterCriteria = {};
                 for(var prop in $scope.filter) {
-                    if($scope.filter.hasOwnProperty(prop) && prop) {
+                    if($scope.filter.hasOwnProperty(prop) && prop &&  $scope.filter[prop]) {
                         myFilterCriteria[prop] = $scope.filter[prop].toLowerCase();
                     }
                 }
-                
+
                 if(lodashSrvc.isEmpty(myFilterCriteria)) {
-                    $scope.countries = originalList;
+                    $scope.countries = originalCountryList;
                 } else {
-                    $scope.countries = lodashSrvc.filter(originalList, function(item) { 
+                    $scope.countries = lodashSrvc.filter(originalCountryList, function(item) { 
                         for(var prop in myFilterCriteria) {
                             if(!(item[prop].toLowerCase().indexOf(myFilterCriteria[prop]) > -1)) {
                                 return false;
@@ -34,16 +35,34 @@ var abc;
             useExternalFilter: true
         };
         
-        $scope.gridOptions = {
+        $scope.countryGridOptions = {
             data: 'countries',
             columnDefs: [{
                 field:'name', 
                 displayName:'Name',
-                headerCellTemplate: '<div ng-class="\'colt\' + col.index" class="ngHeaderText" filterable-grid-column="{{col.field}}" ></div>'
+                headerCellTemplate: '<div ng-class="\'colt\' + col.index" class="ngHeaderText" filterable-grid-column filter-group="countries" ></div>'
             }, {
                 field:'code', 
                 displayName:'Code',
-                headerCellTemplate: '<div ng-class="\'colt\' + col.index" class="ngHeaderText" filterable-grid-column="{{col.field}}" ></div>'
+                headerCellTemplate: '<div ng-class="\'colt\' + col.index" class="ngHeaderText" filterable-grid-column filter-group="countries" ></div>'
+            }],
+            filterOptions:	$scope.filterOptions
+        };
+        
+        $scope.companyGridOptions = {
+            data: 'companies',
+            columnDefs: [{
+                field:'name', 
+                displayName:'Name',
+                headerCellTemplate: '<div ng-class="\'colt\' + col.index" class="ngHeaderText" filterable-grid-column filter-group="companies" ></div>'
+            }, {
+                field:'industry', 
+                displayName:'Industry',
+                headerCellTemplate: '<div ng-class="\'colt\' + col.index" class="ngHeaderText" filterable-grid-column filter-group="companies" ></div>'
+            }, {
+                field:'hq', 
+                displayName:'Headquarters',
+                headerCellTemplate: '<div ng-class="\'colt\' + col.index" class="ngHeaderText" filterable-grid-column filter-group="companies" ></div>'
             }],
             filterOptions:	$scope.filterOptions
         };
@@ -52,10 +71,14 @@ var abc;
         
         getDataSrvc.getAllCountries()
             .then(function(response) {
-                $scope.countries = originalList = response;
+                $scope.countries = originalCountryList = response;
+                
             });
         
-        abc= $scope;
+        getDataSrvc.getAllCompanies()
+            .then(function(response) {
+                $scope.companies = originalCompanyList = response;
+            });
     };
     
     angular.module('gridFilter', ['ngGrid'])
@@ -69,7 +92,15 @@ var abc;
                                 return response.data.countries;
                             });
 
-                    return promise;        
+                    return promise;
+                },
+                getAllCompanies: function() {
+                    var promise = $http.get('data/companies.json')
+                            .then(function(response) {
+                                return response.data.companies;
+                            });
+
+                    return promise;
                 }
             };
         }]).factory('filterText', function() {
@@ -80,13 +111,24 @@ var abc;
             return {
                 restrict: 'A',
                 scope: false,
-                template: '<div><input id="ff__{{col.field}}" type="checkbox" class="noShow showFilter"><span class="heading">{{col.displayName}}<label for="ff__{{col.field}}" class="glyphicon glyphicon-filter pull-right" /></span><span class="filterHeader"><input type="text" ng-model="filterBy" /><label for="ff__{{col.field}}" ng-click="clear()" class="glyphicon glyphicon-remove pull-right" /></span></div>',
+                template: '<div><div ng-class="{noShow: filterCol}">{{col.displayName}}<span ng-click="turnFilteringOn()" class="glyphicon glyphicon-filter pull-right" /></div><div ng-class="{noShow: !filterCol}"><input type="text" ng-model="filterBy" /><span ng-click="clear()" class="glyphicon glyphicon-remove pull-right" /></span></div>',
                 link: function(scope, element, attrs) {
+                    debugger;
+                    if(!filterText[attrs.filterGroup]) {
+                        filterText[attrs.filterGroup] = {};
+                    }
+                    
                     scope.$watch('filterBy', function(value) {
-                        filterText[attrs.filterableGridColumn] = value;
+                        filter.currentList = attrs.filterableGridColumn;
+                        filterText[attrs.filterGroup][attrs.filterableGridColumn] = value;
                     });
                     
+                    scope.turnFilteringOn = function() {
+                        scope.filterCol = true;
+                    };
+                    
                     scope.clear = function() {
+                        scope.filterCol = false;
                         scope.filterBy = "";
                     };
                 }

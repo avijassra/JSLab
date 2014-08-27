@@ -8,20 +8,8 @@ div.gap {
     min-height:50px !important;
 }
 
-input.filterColChkbox, input.filterTextChkbox {
-    display: none;
-}
-
-input.noShow {
+.noShow {
     display: none !important;
-}
-
-input.noShow.showFilter:checked ~ .heading {
-    display: none;
-}
-
-input.noShow.showFilter:not(:checked) ~ .filterHeader {
-    display: none;
 }
 
 div.filterTextContainer {
