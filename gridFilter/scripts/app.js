@@ -3,7 +3,7 @@ var abc;
 (function() {
     'use strict';
     
-    var MainCtrl = function($scope, getDataSrvc, lodashSrvc) {
+    var MainCtrl = function($scope, getDataSrvc, filterText, lodashSrvc) {
         var originalList = [], 
             filterFunc = function() {
                 var myFilterCriteria = {};
@@ -28,7 +28,7 @@ var abc;
             };
         
         $scope.countries = [];
-        $scope.filter;
+        $scope.filter = filterText;
         $scope.filterOptions = {
             filterText: '',
             useExternalFilter: true
@@ -39,10 +39,11 @@ var abc;
             columnDefs: [{
                 field:'name', 
                 displayName:'Name',
-                headerCellTemplate: '<div ng-class="\'colt\' + col.index" class="ngHeaderText" filterable-grid-column="" display-name="{{col.displayName}}" field-name="{{col.field}}" filter-prop="filter.{{col.field}}" ></div>'
+                headerCellTemplate: '<div ng-class="\'colt\' + col.index" class="ngHeaderText" filterable-grid-column="{{col.field}}" ></div>'
             }, {
                 field:'code', 
-                displayName:'Code'
+                displayName:'Code',
+                headerCellTemplate: '<div ng-class="\'colt\' + col.index" class="ngHeaderText" filterable-grid-column="{{col.field}}" ></div>'
             }],
             filterOptions:	$scope.filterOptions
         };
@@ -71,18 +72,23 @@ var abc;
                     return promise;        
                 }
             };
-        }]).directive('filterableGridColumn', [function() {
+        }]).factory('filterText', function() {
+            return {
+                
+            };
+        }).directive('filterableGridColumn', ['filterText', function(filterText) {
             return {
                 restrict: 'A',
-                scope: {
-                    displayName: '@',
-                    filedName: '@',
-                    filterProp: '='
-                },
-                template: '<div><input id="ff__{{displayName}}" type="checkbox" class="noShow showFilter"><span class="heading">{{displayName}}<label for="ff__{{displayName}}" class="glyphicon glyphicon-filter pull-right" /></span><span class="filterHeader"><input type="text" ng-model="filterProp" /><label for="ff__{{displayName}}" class="glyphicon glyphicon-remove pull-right" /></span></div>',
-                replace: true,
-                link: function($scope, $element, $attrs) {
+                scope: false,
+                template: '<div><input id="ff__{{col.field}}" type="checkbox" class="noShow showFilter"><span class="heading">{{col.displayName}}<label for="ff__{{col.field}}" class="glyphicon glyphicon-filter pull-right" /></span><span class="filterHeader"><input type="text" ng-model="filterBy" /><label for="ff__{{col.field}}" ng-click="clear()" class="glyphicon glyphicon-remove pull-right" /></span></div>',
+                link: function(scope, element, attrs) {
+                    scope.$watch('filterBy', function(value) {
+                        filterText[attrs.filterableGridColumn] = value;
+                    });
                     
+                    scope.clear = function() {
+                        scope.filterBy = "";
+                    };
                 }
             };
         }]).controller('MainCtrl', MainCtrl);    
