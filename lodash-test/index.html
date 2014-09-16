@@ -1,0 +1,39 @@
+<!-- index.html -->
+<doctype html>
+<html>
+	<head>
+		<title>_ Understanding</title>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.11/ng-grid.min.css" >
+		<link rel="stylesheet" href="styles/main.css">
+	</head>
+	<body ng-app="lodashApp" >
+		<div class="container" ng-controller="MainCtrl">
+            <div class="row gap" ></div>
+            <div class="row" >
+                <span class="center">
+                    <h2>_ Testing</h2>
+                </span>
+            </div>
+            <div class="row gap" ></div>
+            <div class="row" >
+                <div class="col-md-6" >
+                    <ul>
+                        <li ng-repeat="comp in companies" >{{comp.name}}</li>
+                    </ul>
+                </div>
+                <div class="col-md-6" >
+                    <ul>
+                        <li ng-repeat="ind in industries track by $index" >{{ind}}</li>
+                    </ul>
+                </div>
+			</div>
+            <div class="row gap" ></div>
+        </div>
+		<!-- script tags -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-route.js"></script>
+        <script src="scripts/lodash.2.4.1.js" ></script>
+		<script src="scripts/app.js"></script>
+	</body>
+</html>

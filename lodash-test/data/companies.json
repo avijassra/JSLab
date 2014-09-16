@@ -1,0 +1,108 @@
+{
+  "companies": [{
+    "name": "Apple Inc",
+    "industry": "Electronics",
+    "revenue": 170.91,
+    "employess": 80300,
+    "marketCap": 453.03,
+    "hq": "Cupertino, CA, USA"
+  }, {
+    "name": "Google",
+    "industry": "Internet",
+    "revenue": 59.82,
+    "employess": 53546,
+    "marketCap": 380.64,
+    "hq": "Mountain View, CA, USA"
+  }, {
+    "name": "Microsoft",
+    "industry": "Software",
+    "revenue": 86.83,
+    "employess": 128076,
+    "marketCap": 370.31,
+    "hq": "Redmond, WA, USA"
+  }, {
+    "name": "IBM",
+    "industry": "Computer services",
+    "revenue": 99.75,
+    "employess": 433362,
+    "marketCap": 187.95,
+    "hq": "Armonk, NY, USA"
+  }, {
+    "name": "Samsung Electronics",
+    "industry": "Electronics",
+    "revenue": 212.68,
+    "employess": 270000,
+    "marketCap": 163.41,
+    "hq": "Seoul, South Korea"
+  }, {
+    "name": "Amazon.com",
+    "industry": "Internet",
+    "revenue": 74.45,
+    "employess": 117300,
+    "marketCap": 160.49,
+    "hq": "Seattle, WA, USA"
+  }, {
+    "name": "Intel",
+    "industry": "Semiconductor",
+    "revenue": 52.70,
+    "employess": 104700,
+    "marketCap": 119.1,
+    "hq": "Santa Clara, CA, USA"
+  }, {
+    "name": "HP",
+    "industry": "Hardware",
+    "revenue": 112.3,
+    "employess": 317500,
+    "marketCap": 60.84,
+    "hq": "Palo Alto, CA, USA"
+  }, {
+    "name": "Foxconn",
+    "industry": "Electronics",
+    "revenue": 132.07,
+    "employess": 1290000,
+    "marketCap": 32.15,
+    "hq": "New Taipei, Taiwan"
+  }, {
+    "name": "Hitachi",
+    "industry": "Electronics",
+    "revenue": 87.51,
+    "employess": 326240,
+    "marketCap": 28.46,
+    "hq": "Tokyo, Japan"
+  }, {
+    "name": "Dell",
+    "industry": "Hardware",
+    "revenue": 56.94,
+    "employess": 108800,
+    "marketCap": 22.97,
+    "hq": "Austin, TX, USA"
+  }, {
+    "name": "Panasonic",
+    "industry": "Electronics",
+    "revenue": 70.83,
+    "employess": 327512,
+    "marketCap": 22.7,
+    "hq": "Osaka, Japan"
+  }, {
+    "name": "Toshiba",
+    "industry": "Electronics",
+    "revenue": 56.20,
+    "employess": 206087,
+    "marketCap": 17.67,
+    "hq": "Tokyo, Japan"
+  }, {
+    "name": "LG Electronics",
+    "industry": "Electronics",
+    "revenue": 54.75,
+    "employess": 38718,
+    "marketCap": 17.67,
+    "hq": "Seoul, South Korea"
+  }, {
+    "name": "Sony",
+    "industry": "Electronics",
+    "revenue": 72.34,
+    "employess": 146300,
+    "marketCap": 17.6,
+    "hq": "Tokyo, Japan"
+  }]
+}
