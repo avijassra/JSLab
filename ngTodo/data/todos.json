@@ -1,0 +1,23 @@
+{
+  "todos": [{
+    "id": 1,
+    "task": "Finalize company Name",
+    "isComplete": false
+  }, {
+    "id": 2,
+    "task": "Register company",
+    "isComplete": false
+  }, {
+    "id": 3,
+    "task": "Understand Material Design",
+    "isComplete": false
+  }, {
+    "id": 4,
+    "task": "Upgrade phone wih angular L update",
+    "isComplete": false
+  }, {
+    "id": 5,
+    "task": "Get new shoes",
+    "isComplete": true
+  }]
+}

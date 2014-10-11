@@ -7,7 +7,7 @@ $(function (){
     }
 
     var initInputs = function() {
-        debugger;
+        //debugger;
         // Add fake-checkbox to material checkboxes
         $(".checkbox > label > input").not(".bs-material").addClass("bs-material").after("<span class=check></span>");
 
@@ -36,14 +36,26 @@ $(function (){
         });
 
     };
-    initInputs();
+    
+    
+    
+    angular.module('material.design', [])
+        .directive('input', _materialDesignDrct)
+        .directive('textarea', _materialDesignDrct)
+        .directive('select', _materialDesignDrct);
 
+    function _materialDesignDrct() {
+        return {
+                restrict: 'E',
+                link: initInputs
+            }
+    }
+    
     // Support for "arrive.js" to dynamically detect creation of elements
     // include it before this script to take advantage of this feature
     // https://github.com/uzairfarooq/arrive/
     if (document.arrive) {
         document.arrive("input, textarea, select", function() {
-            debugger;
             initInputs();
         });
     }
@@ -63,24 +75,24 @@ $(function (){
         }, 1);
     });
     $(document)
-        .on("focus", ".form-control-wrapper.fileinput", function() {
-            $(this).find("input").addClass("focus");
-        })
-        .on("blur", ".form-control-wrapper.fileinput", function() {
-            $(this).find("input").removeClass("focus");
-        })
-        .on("change", ".form-control-wrapper.fileinput [type=file]", function() {
-            var value = "";
-            $.each($(this)[0].files, function(i, file) {
-                console.log(file);
-                value += file.name + ", ";
-            });
-            value = value.substring(0, value.length - 2);
-            if (value) {
-                $(this).prev().removeClass("empty");
-            } else {
-                $(this).prev().addClass("empty");
-            }
-            $(this).prev().val(value);
+    .on("focus", ".form-control-wrapper.fileinput", function() {
+        $(this).find("input").addClass("focus");
+    })
+    .on("blur", ".form-control-wrapper.fileinput", function() {
+        $(this).find("input").removeClass("focus");
+    })
+    .on("change", ".form-control-wrapper.fileinput [type=file]", function() {
+        var value = "";
+        $.each($(this)[0].files, function(i, file) {
+            console.log(file);
+            value += file.name + ", ";
         });
+        value = value.substring(0, value.length - 2);
+        if (value) {
+            $(this).prev().removeClass("empty");
+        } else {
+            $(this).prev().addClass("empty");
+        }
+        $(this).prev().val(value);
+    });
 });
