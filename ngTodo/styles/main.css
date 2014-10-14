@@ -1,3 +1,11 @@
 .strike {
     text-decoration: line-through;
 }
+
+.modal {
+    display: block;
+}
+
+.md {
+    height: 400px !important;
+}

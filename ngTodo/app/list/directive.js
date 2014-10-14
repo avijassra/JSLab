@@ -9,7 +9,6 @@
         };
         
         function _link(scope, elements, attrs) {
-            debugger;
             var sliderElems = $('.slider');
             
             if(sliderElems.length > 0 ) {

@@ -10,7 +10,8 @@
         'datacontext', // http services
         
         // 3rd party
-        'material.design'
+        'ui.bootstrap', // angular ui bootstrap
+        'material.design' // bootstrap material design
     ]).service('fpSrvc', function() {
         // registering service for function programming
         // we are using lodash
