@@ -6,4 +6,20 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+/* GET home page. */
+router.get('/helloworld', function(req, res, next) {
+  res.render('helloworld', { title: 'Hello World' });
+});
+
+/* GET todolist page. */
+router.get('/todos', function(req, res) {
+    var db = req.db;
+    var collection = db.get('todos');
+    collection.find({},{},function(e,docs){
+        res.render('todolist', {
+            "todolist" : docs
+        });
+    });
+});
+
 module.exports = router;
