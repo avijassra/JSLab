@@ -16,7 +16,8 @@ router.get('/todos', function(req, res) {
     var db = req.db;
     var collection = db.get('todos');
     collection.find({},{},function(e,docs){
-        res.render('todolist', {
+        res.render('helloworld', {
+            title: 'Todo List',
             "todolist" : docs
         });
     });
