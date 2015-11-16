@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html data-ng-app="meanTodo">
+<html data-ng-app="meanTodo" data-ng-controller="AppCtrl as ctrl">
   <head>
-    <title><%= title %></title>
+    <title data-ng-bind="$root.pageTitle"></title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0-rc3/angular-material.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js" ></script>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <section>
+      <script src="/javascripts/config.js"></script>
+    </section>
   </body>
 </html>
