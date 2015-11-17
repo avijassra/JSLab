@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-ng-app="meanTodo" data-ng-controller="AppCtrl as ctrl">
+<html data-ng-app="meanTodoApp" data-ng-controller="AppCtrl as ctrl">
   <head>
     <title data-ng-bind="$root.pageTitle"></title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
@@ -8,8 +8,11 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+    <div data-ui-view=""> 
     <section>
       <script src="/javascripts/config.js"></script>
+      <script src="/javascripts/appCtrl.js"></script>
+      <script src="/javascripts/todoCtrl.js"></script>
     </section>
   </body>
 </html>
