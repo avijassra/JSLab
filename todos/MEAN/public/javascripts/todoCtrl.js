@@ -20,6 +20,7 @@
 			if(newTask) {
 				saveNewTask(newTask)
 					.then(function(response){
+						$scope.newTask = null;
 						$scope.todos.push(response);
 					});
 			}
