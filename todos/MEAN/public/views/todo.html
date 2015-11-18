@@ -1,1 +1,13 @@
-<h1>Todo</h1>
+<div layout="row" layout-align="center center">
+  <div>
+	  <h3>To Dos</h3>
+  </div>
+  <span>{{testVal}}</span>
+  <br>
+  <div data-ng-repeat="todo in todos">
+	  <span data-ng-bind="todo._id" ></span>
+	  <span data-ng-bind="todo.task" ></span>
+	  <span data-ng-bind="todo.isComplete" ></span>
+	  <span data-ng-bind="todo.completeBy" ></span>
+  </div>
+</div>
