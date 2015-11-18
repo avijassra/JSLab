@@ -14,11 +14,26 @@
 		}
 		
 		function onAddNewTaskClickEventHandler() {
-			alert(1);
+			var newTask = $scope.newTask.trim();
+			if(newTask) {
+				saveNewTask(newTask)
+					.then(function(response){
+						$scope.todos.push({_id: response, task: newTask});
+					});
+			}
 		}
 		
 		function loadAllTasks() {
 			var promise = $http.get('/todos')
+							.then(function(response) {
+								return (response ? response.data : null);
+							});
+							
+			return promise
+		}
+		
+		function saveNewTask(newTask) {
+			var promise = $http.post('/todos', {newTask: newTask})
 							.then(function(response) {
 								return (response ? response.data : null);
 							});
