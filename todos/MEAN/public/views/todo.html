@@ -1,13 +1,18 @@
-<div layout="row" layout-align="center center">
-  <div>
-	  <h3>To Dos</h3>
+<div class="row" >
+  <div class="row text-center" >
+    <h3>To Dos</h3>
   </div>
-  <span>{{testVal}}</span>
-  <br>
-  <div data-ng-repeat="todo in todos">
-	  <span data-ng-bind="todo._id" ></span>
-	  <span data-ng-bind="todo.task" ></span>
-	  <span data-ng-bind="todo.isComplete" ></span>
-	  <span data-ng-bind="todo.completeBy" ></span>
+  <div class="row" ></div>
+  <div class="row" layout-align="center center">
+    <input type="text" ng-model="newTask" required md-maxlength="10">
+  </div>
+  <div class="row" ></div>
+  <div class="row" data-ng-repeat="todo in todos">
+    <div class="col-md-12">
+      <input id="{{todo._id}}" type="checkbox" ng-model="todo.isComplete" class="hdOpt">
+      <label for="{{todo._id}}">
+        <i class="fa fa-check-square-o" data-ng-class="{ 'fa-check-square-o': todo.isComplete, 'fa-square-o': !todo.isComplete }"></i> {{todo.task}}
+      </label>
+    </div>
   </div>
 </div>
