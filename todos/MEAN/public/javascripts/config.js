@@ -8,7 +8,6 @@
         // If the url is ever invalid, e.g. '/asdf', then redirect to '/' aka the home state
         .otherwise('/');
 
-
       // Use $stateProvider to configure your states.
       $stateProvider
         //////////
@@ -23,7 +22,6 @@
     }
 	
 	angular.module('meanTodoApp', [
-		  'ui.router', 
-  		'ngAnimate'
+		  'ui.router'
 	]).config(['$stateProvider', '$urlRouterProvider', RouteConfiguration]);
 })();
