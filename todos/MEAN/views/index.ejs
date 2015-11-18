@@ -4,12 +4,15 @@
     <title data-ng-bind="$root.pageTitle"></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" >
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" >
+    <link rel='stylesheet' href='/stylesheets/bootstrap.ext.css' />
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js" ></script>
   </head>
   <body>
-    <div data-ui-view=""> 
+    <div class="container" >
+      <div data-ui-view="">
+    </div>
     <section>
       <script src="/javascripts/config.js"></script>
       <script src="/javascripts/appCtrl.js"></script>

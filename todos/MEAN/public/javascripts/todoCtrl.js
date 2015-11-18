@@ -1,5 +1,9 @@
+/* global angular */
 ; (function() {
 	function TodoController($http, $rootScope, $scope) {
+		//event handler
+		$scope.addTask = onAddNewTaskClickEventHandler;
+		
 		initView()
 		
 		function initView() {
@@ -7,8 +11,10 @@
 				.then(function(response){
 					$scope.todos = response;
 				});
-				
-			$scope.testVal = "todo list page";
+		}
+		
+		function onAddNewTaskClickEventHandler() {
+			alert(1);
 		}
 		
 		function loadAllTasks() {

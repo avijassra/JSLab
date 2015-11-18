@@ -1,0 +1,11 @@
+.gap-v {
+  min-height: 15px !important;
+}
+
+.gap-v-lg {
+  min-height: 30px !important;
+}
+
+hr {
+  color: #A3A3A3
+}

@@ -2,11 +2,26 @@
   <div class="row text-center" >
     <h3>To Dos</h3>
   </div>
-  <div class="row" ></div>
-  <div class="row" layout-align="center center">
-    <input type="text" ng-model="newTask" required md-maxlength="10">
+  <hr>
+  <div class="row">
+    <form data-ng-submit="addTask()" >
+      <div class="col-md-10">
+        <input type="text" ng-model="newTask" required class="form-control">
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-primary">
+          <i class="fa fa-plus" ></i>
+          <span>Add</span>
+        </button>
+        <button type="reset" class="btn btn-primary">
+          <i class="fa fa-refresh" ></i>
+          <span>Clear</span>
+        </button>
+      </div>
+    </form>
   </div>
-  <div class="row" ></div>
+  <hr>
+  <div class="row gap-v-lg" ></div>
   <div class="row" data-ng-repeat="todo in todos">
     <div class="col-md-12">
       <input id="{{todo._id}}" type="checkbox" ng-model="todo.isComplete" class="hdOpt">
