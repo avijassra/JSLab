@@ -28,6 +28,10 @@
       <label for="{{todo._id}}">
         <i class="fa fa-check-square-o" data-ng-class="{ 'fa-check-square-o': todo.isComplete, 'fa-square-o': !todo.isComplete }"></i> {{todo.task}}
       </label>
+      <span class="pull-right">
+        <i class="fa fa-trash" data-ng-click="deleteTask(todo._id)" ></i>
+        <i class="fa fa-pencil" data-ng-click="editTask(todo)" ></i>
+      </span>
     </div>
   </div>
 </div>

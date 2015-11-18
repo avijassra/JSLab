@@ -1,8 +1,10 @@
 /* global angular */
 ; (function() {
-	function TodoController($http, $rootScope, $scope) {
+	function TodoController($http, $rootScope, $scope, FPSrvc) {
 		//event handler
 		$scope.addTask = onAddNewTaskClickEventHandler;
+		$scope.editTask = onEditTaskClickEventHandler;
+		$scope.deleteTask = onDeleteTaskClickEventHandler;
 		
 		initView()
 		
@@ -18,9 +20,23 @@
 			if(newTask) {
 				saveNewTask(newTask)
 					.then(function(response){
-						$scope.todos.push({_id: response, task: newTask});
+						$scope.todos.push(response);
 					});
 			}
+		}
+		
+		function onEditTaskClickEventHandler(task) {
+			
+		}
+		
+		function onDeleteTaskClickEventHandler(id) {
+			deleteTask(id)
+				.then(function(response){
+					if(!response.hasError) {
+						$scope.todos = FPSrvc.reject($scope.todos, {_id: id});	
+					}
+					
+				});
 		}
 		
 		function loadAllTasks() {
@@ -40,8 +56,17 @@
 							
 			return promise
 		}
+		
+		function deleteTask(id) {
+			var promise = $http.delete('/todos/' + id)
+							.then(function(response) {
+								return (response ? response.data : null);
+							});
+							
+			return promise
+		}
 	}
 	
 	angular.module('meanTodoApp')
-		.controller('TodoCtrl', ['$http', '$rootScope', '$scope', TodoController]);
+		.controller('TodoCtrl', ['$http', '$rootScope', '$scope', 'FPSrvc', TodoController]);
 })();

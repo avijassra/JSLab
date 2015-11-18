@@ -23,5 +23,7 @@
 	
 	angular.module('meanTodoApp', [
 		  'ui.router'
-	]).config(['$stateProvider', '$urlRouterProvider', RouteConfiguration]);
+	]).constant('FPSrvc', window._)
+  
+  .config(['$stateProvider', '$urlRouterProvider', RouteConfiguration]);
 })();

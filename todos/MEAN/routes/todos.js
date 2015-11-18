@@ -1,3 +1,4 @@
+/* global ObjectId */
 var express = require('express');
 var router = express.Router();
 
@@ -27,6 +28,25 @@ router.post('/', function(req, res) {
         } else {
             // And forward to success page
             res.send(JSON.stringify(doc, null, 3));
+        }
+    });
+});
+
+/* POST todo item */
+router.delete('/:id', function(req, res) {
+    var db = req.db, // Set our internal DB variable
+        collection = db.get('todos');
+    
+    // Submit to the DB
+    collection.remove({
+        "_id" : req.params.id
+    }, function (err) {
+        if (err) {
+            // If it failed, return error
+            res.send("There was a problem adding the information to the database.");
+        } else {
+            // And forward to success page
+            res.send(JSON.stringify({ hasError: false}, null, 3));
         }
     });
 });
