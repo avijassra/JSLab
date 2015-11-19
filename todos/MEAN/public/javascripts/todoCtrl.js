@@ -3,6 +3,7 @@
 	function TodoController($http, $rootScope, $scope, FPSrvc) {
 		//event handler
 		$scope.addUpdateTask = onAddUpdateTaskClickEventHandler;
+		$scope.changeCompleteStatus = onchangeCompleteStatusChangeEventHandler;
 		$scope.editTask = onEditTaskClickEventHandler;
 		$scope.deleteTask = onDeleteTaskClickEventHandler;
 		$scope.cancelUpdate = onCancelUpdateClickEventHandler;
@@ -37,6 +38,13 @@
 						});	
 				}
 			}
+		}
+		
+		function onchangeCompleteStatusChangeEventHandler(id, markAsComplete) {
+			updateTaskCompleteStatus(id, markAsComplete)
+						.then(function(response) {
+							// do something
+						});
 		}
 		
 		function onEditTaskClickEventHandler(todo) {
@@ -80,6 +88,15 @@
 		
 		function updateTask(id, updatedTask) {
 			var promise = $http.put('/todos/' + id, {updatedTask: updatedTask})
+							.then(function(response) {
+								return (response ? response.data : null);
+							});
+							
+			return promise
+		}
+		
+		function updateTaskCompleteStatus(id, newCompleteStatus) {
+			var promise = $http.put('/todos/' + id, {isComplete: newCompleteStatus})
 							.then(function(response) {
 								return (response ? response.data : null);
 							});

@@ -20,7 +20,8 @@ router.post('/', function(req, res) {
     
     // Submit to the DB
     collection.insert({
-        "task" : newTask
+        "task" : newTask,
+        "isComplete": false
     }, function (err, doc) {
         if (err) {
             // If it failed, return error
@@ -37,13 +38,22 @@ router.put('/:id', function(req, res) {
     var db = req.db, // Set our internal DB variable
         updatedTaskId = req.params.id,
         updatedTask = req.body.updatedTask, // Get our form values. These rely on the "name" attributes
-        collection = db.get('todos');
-    
+        markAsComplete = req.body.isComplete,
+        collection = db.get('todos'),
+        updateJson;
+        
+    if(typeof updatedTask !== 'undefined') {
+        updateJson = {
+            "task" : updatedTask
+        };
+    } else {
+        updateJson = {
+            "isComplete" : markAsComplete
+        }
+    }
     // Submit to the DB
     collection.update({ _id: updatedTaskId },
-        {
-            "task" : updatedTask    
-        }, function (err, doc) {
+        {$set: updateJson}, function (err, doc) {
         if (err) {
             // If it failed, return error
             res.send("There was a problem adding the information to the database.");

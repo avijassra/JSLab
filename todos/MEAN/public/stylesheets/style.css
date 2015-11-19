@@ -17,6 +17,10 @@ input:disabled + label {
   color: darkgrey !important;
 }
 
+input:checked + label {
+  color: darkgreen !important;
+}
+
 .list span .fa {
   display: none !important;
 }

@@ -36,9 +36,9 @@
   </div>
   <hr>
   <div class="row gap-v-lg" ></div>
-  <div class="row" data-ng-repeat="todo in todos">
+  <div class="row" data-ng-repeat="todo in todos| orderBy: 'isComplete'">
     <div class="col-md-12 list" data-ng-class="{ 'noaxn': (todo._id == selected.id) }">
-      <input id="{{todo._id}}" type="checkbox" ng-model="todo.isComplete" class="hdOpt" data-ng-disabled="(todo._id == selected.id)">
+      <input id="{{todo._id}}" type="checkbox" ng-model="todo.isComplete" class="hdOpt" data-ng-disabled="(todo._id == selected.id)" data-ng-click="changeCompleteStatus(todo._id, todo.isComplete)">
       <label for="{{todo._id}}">
         <i class="fa fa-check-square-o" data-ng-class="{ 'fa-check-square-o': todo.isComplete, 'fa-square-o': !todo.isComplete }"></i> {{todo.task}}
       </label>
