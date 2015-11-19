@@ -2,7 +2,7 @@
 ; (function() {
 	function TodoController($http, $rootScope, $scope, FPSrvc) {
 		//event handler
-		$scope.addTask = onAddNewTaskClickEventHandler;
+		$scope.addUpdateTask = onAddUpdateTaskClickEventHandler;
 		$scope.editTask = onEditTaskClickEventHandler;
 		$scope.deleteTask = onDeleteTaskClickEventHandler;
 		
@@ -15,19 +15,34 @@
 				});
 		}
 		
-		function onAddNewTaskClickEventHandler() {
-			var newTask = $scope.newTask.trim();
-			if(newTask) {
-				saveNewTask(newTask)
-					.then(function(response){
-						$scope.newTask = null;
-						$scope.todos.push(response);
-					});
+		function onAddUpdateTaskClickEventHandler() {
+			var enteredTask = $scope.selected.task.trim();
+			if(enteredTask) {
+				if($scope.selected.id) {
+					updateTask($scope.selected.id, enteredTask)
+						.then(function(response) {
+							for(var i in $scope.todos) {
+								if($scope.todos[i]._id == $scope.selected.id) {
+									$scope.todos[i].task = $scope.selected.task;
+									$scope.selected = {};
+								}
+							}
+						});
+				} else {
+					saveNewTask(enteredTask)
+						.then(function(response){
+							$scope.selected = {};
+							$scope.todos.push(response);
+						});	
+				}
 			}
 		}
 		
-		function onEditTaskClickEventHandler(task) {
-			
+		function onEditTaskClickEventHandler(todo) {
+			$scope.selected = {
+				id: todo._id,
+				task: todo.task
+			};
 		}
 		
 		function onDeleteTaskClickEventHandler(id) {
@@ -51,6 +66,15 @@
 		
 		function saveNewTask(newTask) {
 			var promise = $http.post('/todos', {newTask: newTask})
+							.then(function(response) {
+								return (response ? response.data : null);
+							});
+							
+			return promise
+		}
+		
+		function updateTask(id, updatedTask) {
+			var promise = $http.put('/todos/' + id, {updatedTask: updatedTask})
 							.then(function(response) {
 								return (response ? response.data : null);
 							});

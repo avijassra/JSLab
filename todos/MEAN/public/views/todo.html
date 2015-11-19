@@ -4,19 +4,33 @@
   </div>
   <hr>
   <div class="row">
-    <form data-ng-submit="addTask()" >
+    <form data-ng-submit="addUpdateTask()" >
       <div class="col-md-10">
-        <input type="text" ng-model="newTask" required class="form-control">
+        <input type="text" ng-model="selected.task" required class="form-control">
       </div>
-      <div class="col-md-2">
-        <button class="btn btn-primary">
-          <i class="fa fa-plus" ></i>
-          <span>Add</span>
-        </button>
-        <button type="reset" class="btn btn-primary">
-          <i class="fa fa-refresh" ></i>
-          <span>Clear</span>
-        </button>
+      <div data-ng-hide="selected.id" >
+        <div class="col-md-2">
+          <button class="btn btn-primary">
+            <i class="fa fa-plus" ></i>
+            <span>Add</span>
+          </button>
+          <button type="reset" class="btn btn-primary">
+            <i class="fa fa-refresh" ></i>
+            <span>Clear</span>
+          </button>
+        </div>
+      </div>
+      <div data-ng-show="selected.id" >
+        <div class="col-md-2">
+          <button class="btn btn-primary">
+            <i class="fa fa-check" ></i>
+            <span>Update</span>
+          </button>
+          <button type="reset" class="btn btn-primary">
+            <i class="fa fa-remove" ></i>
+            <span>Cancel</span>
+          </button>
+        </div>
       </div>
     </form>
   </div>

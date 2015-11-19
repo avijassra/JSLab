@@ -1,6 +1,6 @@
 ; (function() {
 	function AppController($rootScope) {
-		$rootScope.pageTitle = 'Hello World';
+		$rootScope.pageTitle = 'Todos';
 	}
 	
 	angular.module('meanTodoApp')
