@@ -5,6 +5,7 @@
 		$scope.addUpdateTask = onAddUpdateTaskClickEventHandler;
 		$scope.editTask = onEditTaskClickEventHandler;
 		$scope.deleteTask = onDeleteTaskClickEventHandler;
+		$scope.cancelUpdate = onCancelUpdateClickEventHandler;
 		
 		initView()
 		
@@ -43,6 +44,10 @@
 				id: todo._id,
 				task: todo.task
 			};
+		}
+		
+		function onCancelUpdateClickEventHandler() {
+			$scope.selected = {};
 		}
 		
 		function onDeleteTaskClickEventHandler(id) {

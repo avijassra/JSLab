@@ -12,3 +12,19 @@ a {
   top: -9999px !important;
   left: -9999px !important;
 }
+
+input:disabled + label {
+  color: darkgrey !important;
+}
+
+.list span .fa {
+  display: none !important;
+}
+
+.list:not(.noaxn):hover span .fa {
+  display: inline !important;
+}
+
+.axn {
+  padding-left: 25px;
+}
