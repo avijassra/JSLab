@@ -21,6 +21,10 @@ input:checked + label {
   color: darkgreen !important;
 }
 
+.list {
+  padding: 5px;
+}
+
 .list span .fa {
   display: none !important;
 }
@@ -31,4 +35,10 @@ input:checked + label {
 
 .axn {
   padding-left: 25px;
+}
+
+.fa-trash:hover,
+.fa-pencil:hover {
+  color: darkred;
+  cursor: pointer;
 }
