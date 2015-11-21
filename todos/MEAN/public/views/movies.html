@@ -1,0 +1,51 @@
+<div class="row" >
+  <div class="row text-center" >
+    <h2>Todos</h2>
+  </div>
+  <hr>
+  <div class="row">
+    <form data-ng-submit="addUpdateTask()" >
+      <div class="col-md-8">
+        <input type="text" ng-model="selected.task" required class="form-control">
+      </div>
+      <div data-ng-hide="selected.id" >
+        <div class="col-md-4">
+          <button class="btn btn-primary">
+            <i class="fa fa-plus" ></i>
+            <span>Add</span>
+          </button>
+          <button type="reset" class="btn btn-primary">
+            <i class="fa fa-refresh" ></i>
+            <span>Clear</span>
+          </button>
+        </div>
+      </div>
+      <div data-ng-show="selected.id" >
+        <div class="col-md-4">
+          <button class="btn btn-primary">
+            <i class="fa fa-check" ></i>
+            <span>Update</span>
+          </button>
+          <button type="reset" data-ng-click="cancelUpdate()" class="btn btn-primary">
+            <i class="fa fa-remove" ></i>
+            <span>Cancel</span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <hr>
+  <div class="row gap-v-lg" ></div>
+  <div class="row" data-ng-repeat="todo in todos| orderBy: 'isComplete'">
+    <div class="col-md-12 list" data-ng-class="{ 'noaxn': (todo._id == selected.id) }">
+      <input id="{{todo._id}}" type="checkbox" ng-model="todo.isComplete" class="hdOpt" data-ng-disabled="(todo._id == selected.id)" data-ng-click="changeCompleteStatus(todo._id, todo.isComplete)">
+      <label for="{{todo._id}}">
+        <i class="fa fa-check-square-o" data-ng-class="{ 'fa-check-square-o': todo.isComplete, 'fa-square-o': !todo.isComplete }"></i> {{todo.task}}
+      </label>
+      <span class="axn">
+        <i class="fa fa-trash" data-ng-click="deleteTask(todo._id)" ></i>
+        <i class="fa fa-pencil" data-ng-click="editTask(todo)" ></i>
+      </span>
+    </div>
+  </div>
+</div>

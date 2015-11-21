@@ -12,12 +12,20 @@
   </head>
   <body>
     <div class="container" >
-      <div data-ui-view="">
+      <div class="row" >
+        <span class="pull-right">
+          <a data-ui-sref="movies" >Movies</a>
+        </span>
+      </div>
+      <div class="row">
+        <div data-ui-view="">
+      </div>
     </div>
     <section>
       <script src="/javascripts/config.js"></script>
       <script src="/javascripts/appCtrl.js"></script>
       <script src="/javascripts/todoCtrl.js"></script>
+      <script src="/javascripts/moviesCtrl.js"></script>
     </section>
   </body>
 </html>
