@@ -18,12 +18,13 @@ System.register(['angular2/core'], function(exports_1) {
         execute: function() {
             TodoListComponent = (function () {
                 function TodoListComponent() {
+                    this.todos = ['learn Angular 2', 'Create Hello World', 'Create Todo App'];
                 }
                 TodoListComponent = __decorate([
                     core_1.Component({
                         selector: 'todo-list',
                         templateUrl: './app/todo/list.html',
-                        styleUrls: ['./app/todo/list.css']
+                        styleUrls: ['./app/todo/list.css'],
                     }), 
                     __metadata('design:paramtypes', [])
                 ], TodoListComponent);

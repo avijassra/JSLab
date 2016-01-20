@@ -25,8 +25,11 @@ System.register(['angular2/core', './todo-list.component'], function(exports_1) 
                 HelloWorldComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        //template: '<h1>Hello, from the other side</h1>'
-                        template: "<div>\n                    <h1>Hello, from the other side</h1>\n                    <todo-list>Loading...</todo-list>\n                </div>",
+                        template: '<todo-list>Loading...</todo-list>',
+                        // template: `<div>
+                        //                 <h1>Hello, from the other side</h1>
+                        //                 <todo-list>Loading...</todo-list>
+                        //             </div>`,
                         directives: [todo_list_component_1.TodoListComponent]
                     }), 
                     __metadata('design:paramtypes', [])

@@ -1,6 +1,15 @@
-<div>
-    <h1>Todos</h1>
+<div class="container">
+    <center>
+        <h1>Todos</h1>
+    </center>
     <br>
-    <input class="new-todo" placeholder="What needs to be done?" >
-    <button class="add" >Add</button>
+    <input class="form-control" placeholder="What needs to be done?" >
+    <br>
+    <br>
+    <div class="row" >
+        <div class="row" *ngFor="#todo of todos" >
+            <span class="pull-left" >{{todo}}</span>
+            <i class="fa fa-times  pull-right"></i>
+        </div>
+    </div>
 </div>

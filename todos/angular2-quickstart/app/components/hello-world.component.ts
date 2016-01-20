@@ -3,11 +3,11 @@ import { TodoListComponent } from './todo-list.component'
 
 @Component({
 	selector: 'my-app',
-    //template: '<h1>Hello, from the other side</h1>'
-	template: `<div>
-                    <h1>Hello, from the other side</h1>
-                    <todo-list>Loading...</todo-list>
-                </div>`,
+    template: '<todo-list>Loading...</todo-list>'
+	// template: `<div>
+    //                 <h1>Hello, from the other side</h1>
+    //                 <todo-list>Loading...</todo-list>
+    //             </div>`,
     directives: [TodoListComponent]
 })
 
