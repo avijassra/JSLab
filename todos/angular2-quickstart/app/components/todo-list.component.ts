@@ -1,4 +1,4 @@
-import { Component } from 'angular2/core';
+import { HelloWorldComponent } from 'angular2/core';
 
 @Component({
     selector: 'todo-list',

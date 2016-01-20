@@ -1,4 +1,4 @@
 import {bootstrap} from 'angular2/platform/browser'
-import {HelloWorldComponent} from './components/hello-world.component'
+import {DashboardComponent} from './components/dashboard.component'
 
-bootstrap(HelloWorldComponent);
+bootstrap(DashboardComponent);
