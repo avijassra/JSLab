@@ -1,4 +1,4 @@
-System.register(['angular2/core', './tabs.component', './tab.component', './hello-world.component'], function(exports_1) {
+System.register(['angular2/core', './tabs.component', './tab.component', './hello-world.component', './todo-list.component'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(['angular2/core', './tabs.component', './tab.component', './hell
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, tabs_component_1, tab_component_1, hello_world_component_1;
+    var core_1, tabs_component_1, tab_component_1, hello_world_component_1, todo_list_component_1;
     var DashboardComponent;
     return {
         setters:[
@@ -23,24 +23,19 @@ System.register(['angular2/core', './tabs.component', './tab.component', './hell
             },
             function (hello_world_component_1_1) {
                 hello_world_component_1 = hello_world_component_1_1;
+            },
+            function (todo_list_component_1_1) {
+                todo_list_component_1 = todo_list_component_1_1;
             }],
         execute: function() {
-            //import { TodoListComponent } from './todo-list.component';
             DashboardComponent = (function () {
                 function DashboardComponent() {
                 }
                 DashboardComponent = __decorate([
                     core_1.Component({
                         selector: 'dashboard',
-                        // template: `
-                        //     <tabs>
-                        //         <tab [tab-title]="'Hello World'"><hello-world>Loading...</hello-world></tab>
-                        //         <tab tab-title="Todo List"><todo-list>Loading...</todo-list></tab>
-                        //     </tabs>
-                        // `,
                         template: "\n      <tabs>\n        <tab tab-title=\"Hello World\"><hello-world>Loading...</hello-world></tab>\n        <tab tab-title=\"Todo List\"><todo-list>Loading...</todo-list></tab>\n      </tabs>\n    ",
-                        //directives: [TabsComponent, TabComponent, HelloWorldComponent, TodoListComponent]
-                        directives: [tabs_component_1.TabsComponent, tab_component_1.TabComponent, hello_world_component_1.HelloWorldComponent]
+                        directives: [tabs_component_1.TabsComponent, tab_component_1.TabComponent, hello_world_component_1.HelloWorldComponent, todo_list_component_1.TodoListComponent]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], DashboardComponent);
