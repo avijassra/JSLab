@@ -34,7 +34,7 @@ System.register(['angular2/core', './tabs.component', './tab.component', './hell
                 DashboardComponent = __decorate([
                     core_1.Component({
                         selector: 'dashboard',
-                        template: "\n      <tabs>\n        <tab tab-title=\"Hello World\"><hello-world>Loading...</hello-world></tab>\n        <tab tab-title=\"Todo List\"><todo-list>Loading...</todo-list></tab>\n      </tabs>\n    ",
+                        template: "\n        <div>\n            <center><h1>My Angular 2.0 App</h1></center>\n            <br>\n            <br>\n            <tabs>\n                <tab tab-title=\"Hello World\"><hello-world>Loading...</hello-world></tab>\n                <tab tab-title=\"Todo List\"><todo-list>Loading...</todo-list></tab>\n            </tabs>\n        </div>\n    ",
                         directives: [tabs_component_1.TabsComponent, tab_component_1.TabComponent, hello_world_component_1.HelloWorldComponent, todo_list_component_1.TodoListComponent]
                     }), 
                     __metadata('design:paramtypes', [])

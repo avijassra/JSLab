@@ -22,7 +22,7 @@ System.register(['angular2/core'], function(exports_1) {
                 HelloWorldComponent = __decorate([
                     core_1.Component({
                         selector: 'hello-world',
-                        template: "<h1>Hello, from the other side</h1>",
+                        template: "<h4>Hello, from the other side</h4>",
                     }), 
                     __metadata('design:paramtypes', [])
                 ], HelloWorldComponent);

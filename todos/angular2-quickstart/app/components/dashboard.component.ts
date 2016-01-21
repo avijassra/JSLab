@@ -7,10 +7,15 @@ import { TodoListComponent } from './todo-list.component';
 @Component({
     selector: 'dashboard',
     template: `
-      <tabs>
-        <tab tab-title="Hello World"><hello-world>Loading...</hello-world></tab>
-        <tab tab-title="Todo List"><todo-list>Loading...</todo-list></tab>
-      </tabs>
+        <div>
+            <center><h1>My Angular 2.0 App</h1></center>
+            <br>
+            <br>
+            <tabs>
+                <tab tab-title="Hello World"><hello-world>Loading...</hello-world></tab>
+                <tab tab-title="Todo List"><todo-list>Loading...</todo-list></tab>
+            </tabs>
+        </div>
     `,
     directives: [TabsComponent, TabComponent, HelloWorldComponent, TodoListComponent]
 })
