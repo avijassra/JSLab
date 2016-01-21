@@ -20,7 +20,6 @@ export class TabComponent {
     active = this.active || false;
     
     constructor(tabs: TabsComponent) {
-        debugger;
         tabs.addTab(this);
     }
 }

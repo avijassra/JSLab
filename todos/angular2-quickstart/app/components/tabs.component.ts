@@ -40,12 +40,10 @@ export class TabsComponent {
     tabs: TabComponent[];
     
     constructor() {
-        debugger;
         this.tabs = [];
     }
     
     selectTab(tab) {
-        debugger;
         _deactivateAllTabs(this.tabs);
         tab.active = true;
         

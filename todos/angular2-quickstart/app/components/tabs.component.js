@@ -18,11 +18,9 @@ System.register(['angular2/core'], function(exports_1) {
         execute: function() {
             TabsComponent = (function () {
                 function TabsComponent() {
-                    debugger;
                     this.tabs = [];
                 }
                 TabsComponent.prototype.selectTab = function (tab) {
-                    debugger;
                     _deactivateAllTabs(this.tabs);
                     tab.active = true;
                     function _deactivateAllTabs(tabs) {

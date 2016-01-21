@@ -20,6 +20,16 @@ System.register(['angular2/core'], function(exports_1) {
                 function TodoListComponent() {
                     this.todos = ['learn Angular 2', 'Create Hello World', 'Create Todo App'];
                 }
+                TodoListComponent.prototype.addNewTodo = function (e, newTodo) {
+                    debugger;
+                    if (e.which == 13) {
+                        this.todos.push(newTodo.value);
+                        newTodo.value = "";
+                    }
+                };
+                TodoListComponent.prototype.removeTodoTask = function (i) {
+                    this.todos.splice(i, 1);
+                };
                 TodoListComponent = __decorate([
                     core_1.Component({
                         selector: 'todo-list',

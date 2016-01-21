@@ -3,13 +3,13 @@
         <h1>Todos</h1>
     </center>
     <br>
-    <input class="form-control" placeholder="What needs to be done?" >
+    <input #newTodo class="form-control" placeholder="What needs to be done?" (keypress)="addNewTodo($event, newTodo)" >
     <br>
     <br>
     <div class="row" >
-        <div class="row" *ngFor="#todo of todos" >
+        <div class="row" *ngFor="#todo of todos; #i = index" >
             <span class="pull-left" >{{todo}}</span>
-            <i class="fa fa-times  pull-right"></i>
+            <i class="fa fa-times  pull-right" (click)="removeTodoTask(i)"></i>
         </div>
     </div>
 </div>
