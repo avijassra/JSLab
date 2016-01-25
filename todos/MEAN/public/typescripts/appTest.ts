@@ -7,7 +7,7 @@ class App {
     }
     
     ShowMessage() {
-        alert(this.name);
+        document.write(this.name);
     }
 }
 

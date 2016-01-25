@@ -4,7 +4,7 @@ var App = (function () {
         this.age = 32;
     }
     App.prototype.ShowMessage = function () {
-        alert(this.name);
+        document.write(this.name);
     };
     return App;
 })();
