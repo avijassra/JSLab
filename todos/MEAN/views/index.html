@@ -10,36 +10,32 @@
   </head>
   <body>
     <!-- 1. Load libraries -->
-    <!--<script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>-->
-    <script src="node_modules/systemjs/dist/system.src.js"></script>
-    <script src="node_modules/rxjs/bundles/Rx.js"></script>
-    <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+    <script src="vendors/angular2/bundles/angular2-polyfills.js"></script>
+    <script src="vendors/systemjs/dist/system.src.js"></script>
+    <script src="vendors/rxjs/bundles/Rx.js"></script>
+    <!--<script src="vendors/es6-shim/es6-shim.min.js"></script>-->
+    <script src="vendors/angular2/bundles/angular2.dev.js"></script>
 
     <!-- 2. Configure SystemJS -->
     <script>
       System.config({
         packages: {        
-          app: {
+          'javascripts': {
             format: 'register',
             defaultExtension: 'js'
           }
         }
       });
-      System.import('app/boot')
+      System.import('javascripts/boot')
             .then(null, console.error.bind(console));
     </script>
     <div class="container" >
       <div class="row" >
-        <span class="pull-right">
-          <a data-ui-sref="movies" >Movies</a>
-        </span>
-      </div>
-      <div class="row">
-        <div data-ui-view="">
+        <app-dashboard>Loading...</app-dashboard>
       </div>
     </div>
-    <section>
+    <!--<section>
       <script src="javascripts/appTest.js" ></script>
-    </section>
+    </section>-->
   </body>
 </html>
