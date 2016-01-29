@@ -4,16 +4,18 @@
     <title ></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" >
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" >
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js" ></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js" ></script>
   </head>
   <body>
+    <div class="container" >
+      <div class="row" >
+        <app-dashboard>Loading...</app-dashboard>
+      </div>
+    </div>
     <!-- 1. Load libraries -->
     <script src="vendors/angular2/bundles/angular2-polyfills.js"></script>
     <script src="vendors/systemjs/dist/system.src.js"></script>
     <script src="vendors/rxjs/bundles/Rx.js"></script>
-    <!--<script src="vendors/es6-shim/es6-shim.min.js"></script>-->
     <script src="vendors/angular2/bundles/angular2.dev.js"></script>
 
     <!-- 2. Configure SystemJS -->
@@ -29,13 +31,5 @@
       System.import('javascripts/boot')
             .then(null, console.error.bind(console));
     </script>
-    <div class="container" >
-      <div class="row" >
-        <app-dashboard>Loading...</app-dashboard>
-      </div>
-    </div>
-    <!--<section>
-      <script src="javascripts/appTest.js" ></script>
-    </section>-->
   </body>
 </html>
