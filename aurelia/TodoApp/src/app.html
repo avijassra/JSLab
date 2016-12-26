@@ -1,3 +1,33 @@
 <template>
   <h1>${message}</h1>
+
+  <div class="container-fluid">
+    <div class="row" >
+      <form submit.trigger="addTodo()">
+        <input type="text" value.bind="taskDescription" />
+        <button type="submit" >Add Task</button>
+        <button type="button" hide.bind="editItemIndex == -1" click.trigger="cancelEditTodo()" >Cancel</button>
+      </form>
+    </div>
+    <div class="row" >
+      &nbsp;
+    </div>
+    <div class="row" >
+      <div class="col-xs-1" ></div>
+      <div class="col-xs-6" >Description</div>
+      <div class="col-xs-1" >Action</div>
+    </div>
+    <div class="row" repeat.for="todo of todos" >
+      <div class="col-xs-1 center" >
+        <input type="checkbox" checked.bind="todo.isCompleted" />
+      </div>
+      <div class="col-xs-6" >
+        <span>${todo.taskDescription}</span>
+      </div>
+      <div class="col-xs-1" hide.bind="editItemIndex != -1" >
+        <i class="fa fa-pencil" aria-hidden="true" click.trigger="editTodo($index)"></i>
+        <i class="fa fa-trash" aria-hidden="true" click.trigger="removeTodo($index)"></i>
+      </div>
+    </div>
+  </div>
 </template>
