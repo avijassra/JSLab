@@ -1,36 +1,13 @@
-import {Todo} from './model/todo';
+import {RouterConfiguration, Router} from 'aurelia-router';
 
 export class App {
-  message: string = 'Todo List';
-  todos: Todo[] = [];
-  taskDescription:string = "";
-  editItemIndex: number = -1;
-
-  addTodo(){
-    if(this.taskDescription) {
-      if(this.editItemIndex == -1) {
-        this.todos.push(new Todo(this.taskDescription));
-      } else {
-        this.todos[this.editItemIndex].taskDescription = this.taskDescription;    
-      }   
-      this.cancelEditTodo();
-    }
-  }
+  router: Router = null;
   
-  editTodo(itemIndex: number) {
-    this.taskDescription = this.todos[itemIndex].taskDescription;
-    this.editItemIndex = itemIndex;
-  }
-
-  removeTodo(itemIndex: number) {
-    if(this.editItemIndex == -1) {
-      this.todos.splice(itemIndex, 1);
-      this.cancelEditTodo();
-    }
-  }
-
-  cancelEditTodo() {
-    this.taskDescription = "";
-    this.editItemIndex = -1;
+  configureRouter(config: RouterConfiguration, router: Router): void {
+    this.router = router;
+    config.map([
+      { route: ['', 'todos'], name: 'todos', moduleId: './module/todos/main', title: 'Todos', nav: true },
+      { route: 'movies', name: 'movies', moduleId: './module/movies/main', title: 'Movies', nav: true },
+    ]);
   }
 }
